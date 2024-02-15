@@ -1,4 +1,4 @@
-const QuizData = [
+const quizData = [
   {
     question:
       "Qual é a linguagem de programação que é conhecida por sua simplicidade e legibilidade, com a filosofia de baterias incluídas?",
@@ -52,17 +52,17 @@ let answerd = 0;
 
 const loadQuiz = () => {
   countQuestion.innerHTML = `${correntQtn + 1}`;
-  tottleNumberofQuestion.innerHTML = QuizData.length;
+  tottleNumberofQuestion.innerHTML = quizData.length;
   questionNumber.innerHTML = `${correntQtn + 1}`;
-  questionTitle.innerHTML = QuizData[correntQtn].question;
-  answerLable[0].innerHTML = QuizData[correntQtn].a;
-  answerLable[1].innerHTML = QuizData[correntQtn].B;
-  answerLable[2].innerHTML = QuizData[correntQtn].C;
-  answerLable[3].innerHTML = QuizData[correntQtn].D;
+  questionTitle.innerHTML = quizData[correntQtn].question;
+  answerLable[0].innerHTML = quizData[correntQtn].a;
+  answerLable[1].innerHTML = quizData[correntQtn].B;
+  answerLable[2].innerHTML = quizData[correntQtn].C;
+  answerLable[3].innerHTML = quizData[correntQtn].D;
 
   reset();
 
-  if (correntQtn == QuizData.length - 1) {
+  if (correntQtn == quizData.length - 1) {
     nextQuestionbtn.style.display = "none";
     submitequiz.style.display = "block";
   }
@@ -76,11 +76,11 @@ const reset = () => {
 nextQuestionbtn.addEventListener("click", () => {
   let answer = getselected();
   if (answer) {
-    if (answer === QuizData[correntQtn].correct_answer) {
+    if (answer === quizData[correntQtn].correct_answer) {
       answerd++;
     }
     correntQtn++;
-    if (correntQtn < QuizData.length) {
+    if (correntQtn < quizData.length) {
       loadQuiz();
     }
   }
@@ -88,14 +88,14 @@ nextQuestionbtn.addEventListener("click", () => {
 
 submitequiz.addEventListener("click", () => {
   let answer = getselected();
-  if (answer === QuizData[correntQtn].correct_answer) {
+  if (answer === quizData[correntQtn].correct_answer) {
     answerd++;
   }
   correntQtn++;
   if (getselected()) {
     quiz.style.display = "none";
     resultadoEl.style.display = "block";
-    scoreEl.innerHTML = `perguntas respondidas corretamente ${answerd} / ${QuizData.length}`;
+    scoreEl.innerHTML = `perguntas respondidas corretamente ${answerd} / ${quizData.length}`;
   }
 });
 
