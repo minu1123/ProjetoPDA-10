@@ -55,10 +55,10 @@ const loadQuiz = () => {
   tottleNumberofQuestion.innerHTML = quizData.length;
   questionNumber.innerHTML = `${correntQtn + 1}`;
   questionTitle.innerHTML = quizData[correntQtn].question;
-  answerLable[0].innerHTML = quizData[correntQtn].a;
-  answerLable[1].innerHTML = quizData[correntQtn].B;
-  answerLable[2].innerHTML = quizData[correntQtn].C;
-  answerLable[3].innerHTML = quizData[correntQtn].D;
+  answerLable[0].innerHTML = quizData[correntQtn].answer_a;
+  answerLable[1].innerHTML = quizData[correntQtn].answer_b;
+  answerLable[2].innerHTML = quizData[correntQtn].answer_c;
+  answerLable[3].innerHTML = quizData[correntQtn].answer_d;
 
   reset();
 
@@ -73,8 +73,8 @@ const reset = () => {
   });
 };
 
-nextQuestionbtn.addEventListener("click", () => {
-  let answer = getselected();
+const nextQuestionHandler = () => {
+  let answer = getSelected();
   if (answer) {
     if (answer === quizData[correntQtn].correct_answer) {
       answerd++;
@@ -84,28 +84,35 @@ nextQuestionbtn.addEventListener("click", () => {
       loadQuiz();
     }
   }
-});
+};
+
+nextQuestionbtn.addEventListener("click", nextQuestionHandler);
 
 submitequiz.addEventListener("click", () => {
-  let answer = getselected();
+  let answer = getSelected();
   if (answer === quizData[correntQtn].correct_answer) {
     answerd++;
   }
   correntQtn++;
-  if (getselected()) {
+  if (getSelected()) {
     quiz.style.display = "none";
     resultadoEl.style.display = "block";
     scoreEl.innerHTML = `perguntas respondidas corretamente ${answerd} / ${quizData.length}`;
   }
 });
 
-const getselected = () => {
+const getSelected = () => {
   let answer;
-  allInputs.forEach((allInputs) => {
-    if (allInputs.checked) {
-      answer = allInputs.value;
-    }
-  });
+  //   allInputs.forEach((input) => {
+  //     if (input.checked) {
+  //       answer = input.value;
+  //     }
+  //   });
+
+  answer = Array.from(allInputs)
+    .filter((input) => input.checked)
+    .pop().value;
+
   return answer;
 };
 loadQuiz();
