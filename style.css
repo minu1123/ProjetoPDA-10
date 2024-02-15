@@ -5,7 +5,7 @@
   --border-width: 2px;
 
   --font-size-smaller: 0.94rem;
-  --font-size-small: 1.12rem;
+  --font-size-small: 1.12;
   --font-size-medium: 1.25rem;
   --font-size-large: 1.56rem;
   --font-size-larger: 2.19rem;
@@ -21,7 +21,7 @@
   width: 100%;
   min-height: 100vh;
   padding: 15px;
-  background-color: var(--primary-color);
+  background-color: #4b204b;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,7 +106,7 @@
   font-weight: 600;
   text-align: center;
   color: white;
-  background-color: var(--secondary-color);
+  background-color: #4b204b;
   width: 60px;
   padding: 10px;
   border-radius: 10px;
