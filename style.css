@@ -30,11 +30,11 @@ margin-top: 20px;
 .question-count .count{
     font-size: 25px;
     font-weight: 800;
-    color: #9307b3;
+    color: #050505;
 }
 
 .question-count .count span{
-    color: #6c42ff;
+    color: #000000;
     font-size: 35px;
 }
 
