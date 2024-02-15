@@ -48,6 +48,7 @@ const QuizData = [{
     D: "Execução de scripts do lado do servidor",
     Correta: "b"
 }, 
+];
 =======
 const quizData = [
   {
