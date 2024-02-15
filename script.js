@@ -73,7 +73,6 @@ const reset = () => {
   });
 };
 
-nextQuestionbtn.addEventListener("click", nextQuestionClickHandler);
 const nextQuestionClickHandler = () => {
   let answer = getSelected();
   if (answer) {
@@ -102,26 +101,18 @@ submitequiz.addEventListener("click", () => {
   }
 });
 
-submitequiz.addEventListener("click", () => {
-  let answer = getSelected();
-  if (answer === quizData[correntQtn].Correta) {
-    answerd++;
-  }
-  correntQtn++;
-  if (getSelected()) {
-    quiz.style.display = "none";
-    resultadoEl.style.display = "block";
-    scoreEl.innerHTML = `perguntas respondidas corretamente ${answerd} / ${quizData.length}`;
-  }
-});
-
 const getSelected = () => {
   let answer;
-  allInputs.forEach((allInputs) => {
-    if (allInputs.checked) {
-      answer = allInputs.value;
-    }
-  });
+  //   allInputs.forEach((input) => {
+  //     if (input.checked) {
+  //       answer = input.value;
+  //     }
+  //   });
+
+  answer = Array.from(allInputs)
+    .filter((input) => input.checked)
+    .pop().value;
+
   return answer;
 };
 loadQuiz();
