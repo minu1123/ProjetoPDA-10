@@ -7,6 +7,22 @@ const QuizData = [{
     Correta: "b"
 },
 {
+    Questao: "Qual linguagem é reconhecida por sua versatilidade, sendo utilizada para automação, desenvolvimento web e outras aplicações?",
+    A: "Java",
+    B: "CSS",
+    C: "HTML",
+    D: "Python",
+    Correta: "d"
+},
+{
+    Questao: "Qual linguagem é usada para estruturar o conteúdo de uma página web?",
+    A: "HTML",
+    B: "CSS",
+    C: "Java",
+    D: "Python",
+    Correta: "a"
+},
+{
     Questao: "Qual dos seguintes não é um tipo de dados em JavaScript?",
     A: "String",
     B: "Boolean",
