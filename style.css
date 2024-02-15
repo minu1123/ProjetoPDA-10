@@ -1,6 +1,6 @@
 :root {
   --primary-color: #6c42ff;
-  --secondary-color: #be44fe;
+  --secondary-color: #19f466;
 
   --border-width: 2px;
 
@@ -43,7 +43,7 @@
 .question-count .count {
   font-size: var(--font-size-large);
   font-weight: 800;
-  color: #9307b3;
+  color: #01ff78;
 }
 
 .question-count .count span {
