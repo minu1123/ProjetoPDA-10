@@ -21,7 +21,7 @@ const quizData = [
     answer_a: "HyperText Markup Language",
     answer_b: "High-Level Text Machine Language",
     answer_c: "HyperTransfer Markup Language",
-    answer_c: "HyperText Machine Language",
+    answer_d: "HyperText Machine Language",
     correct_answer: "a",
   },
   {
@@ -73,7 +73,7 @@ const reset = () => {
   });
 };
 
-const nextQuestionHandler = () => {
+const nextQuestionClickHandler = () => {
   let answer = getSelected();
   if (answer) {
     if (answer === quizData[correntQtn].correct_answer) {
@@ -86,7 +86,7 @@ const nextQuestionHandler = () => {
   }
 };
 
-nextQuestionbtn.addEventListener("click", nextQuestionHandler);
+nextQuestionbtn.addEventListener("click", nextQuestionClickHandler);
 
 submitequiz.addEventListener("click", () => {
   let answer = getSelected();
