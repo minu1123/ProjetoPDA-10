@@ -48,7 +48,7 @@ const resultadoEl = document.getElementById("resultado");
 const scoreEl = document.getElementById("score");
 
 let correntQtn = 0;
-let answerd = 0;
+let correctAnswers = 0;
 
 const loadQuiz = () => {
   countQuestion.innerHTML = `${correntQtn + 1}`;
@@ -77,7 +77,7 @@ const nextQuestionHandler = () => {
   let answer = getSelected();
   if (answer) {
     if (answer === quizData[correntQtn].correct_answer) {
-      answerd++;
+      correctAnswers++;
     }
     correntQtn++;
     if (correntQtn < quizData.length) {
@@ -91,13 +91,13 @@ nextQuestionbtn.addEventListener("click", nextQuestionHandler);
 submitequiz.addEventListener("click", () => {
   let answer = getSelected();
   if (answer === quizData[correntQtn].correct_answer) {
-    answerd++;
+    correctAnswers++;
   }
   correntQtn++;
   if (getSelected()) {
     quiz.style.display = "none";
     resultadoEl.style.display = "block";
-    scoreEl.innerHTML = `perguntas respondidas corretamente ${answerd} / ${quizData.length}`;
+    scoreEl.innerHTML = `perguntas respondidas corretamente ${correctAnswers} / ${quizData.length}`;
   }
 });
 
