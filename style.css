@@ -20,7 +20,7 @@
 .quiz-wrapper {
   width: 100%;
   min-height: 100vh;
-  padding: var(--font-size-smaller);
+  padding: 15px;
   background-color: var(--primary-color);
   display: flex;
   justify-content: center;
