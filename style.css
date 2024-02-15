@@ -176,9 +176,19 @@
   .answers-box {
     display: flex;
     flex-direction: column;
+
+    gap: 25px;
   }
 
   .answers-box .box {
     width: 100%;
+  }
+
+  .quiz-wrapper {
+    padding: 0;
+  }
+
+  .quiz-box {
+    border-radius: 0;
   }
 }
