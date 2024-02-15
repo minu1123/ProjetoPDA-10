@@ -1,55 +1,3 @@
-<<<<<<< HEAD
-const QuizData = [{
-    Questao: "Qual é a linguagem de programação que é conhecida por sua simplicidade e legibilidade, com a filosofia de baterias incluídas?",
-    A: "Java",
-    B: "Python",
-    C: "C++",
-    D: "Ruby",
-    Correta: "b"
-},
-{
-    Questao: "Qual linguagem é reconhecida por sua versatilidade, sendo utilizada para automação, desenvolvimento web e outras aplicações?",
-    A: "Java",
-    B: "CSS",
-    C: "HTML",
-    D: "Python",
-    Correta: "d"
-},
-{
-    Questao: "Qual linguagem é usada para estruturar o conteúdo de uma página web?",
-    A: "HTML",
-    B: "CSS",
-    C: "Java",
-    D: "Python",
-    Correta: "a"
-},
-{
-    Questao: "Qual dos seguintes não é um tipo de dados em JavaScript?",
-    A: "String",
-    B: "Boolean",
-    C: "Float",
-    D: "Character",
-    Correta: "c"
-
-},
-{
-    Questao: "O que significa a sigla HTML?",
-    A: "HyperText Markup Language",
-    B: "High-Level Text Machine Language",
-    C: "HyperTransfer Markup Language",
-    D: "HyperText Machine Language",
-    Correta: "a"
-},
-{
-    Questao: "Qual é a principal função do CSS (Cascading Style Sheets) em desenvolvimento web?",
-    A: "Manipulação de banco de dados",
-    B: "Estilização e formatação de elementos HTML",
-    C: "Controle de lógica de programação",
-    D: "Execução de scripts do lado do servidor",
-    Correta: "b"
-}, 
-];
-=======
 const quizData = [
   {
     question:
@@ -85,73 +33,57 @@ const quizData = [
     answer_d: "Execução de scripts do lado do servidor",
     correct_answer: "b",
   },
->>>>>>> 212d83de7ffd8bd07e85f25db6e6ffc8a3472968
 ];
 
-
-
-
-
-const quiz =document.getElementById("quiz")
+const quiz = document.getElementById("quiz");
 const countQuestion = document.getElementById("count-question");
 const tottleNumberofQuestion = document.getElementById("tol-num-que");
-const questionNumber =document.getElementById("question-number");
-const questionTitle =document.getElementById("question");
-const answerLable =document.querySelectorAll(".answer-lable");
-const nextQuestionbtn =document.getElementById("next-question-btn");
-const allInputs =document.querySelectorAll("input[type='radio']");
+const questionNumber = document.getElementById("question-number");
+const questionTitle = document.getElementById("question");
+const answerLable = document.querySelectorAll(".answer-lable");
+const nextQuestionbtn = document.getElementById("next-question-btn");
+const allInputs = document.querySelectorAll("input[type='radio']");
 const submitequiz = document.getElementById("submite");
 const resultadoEl = document.getElementById("resultado");
-const scoreEl=document.getElementById("score");
+const scoreEl = document.getElementById("score");
 
-let correntQtn=0;
-let answerd = 0;
+let correntQtn = 0;
+let correctAnswers = 0;
 
-const loadQuiz = ()=>{
-    countQuestion.innerHTML = `${correntQtn + 1}`;
-    tottleNumberofQuestion.innerHTML=QuizData.length;
-    questionNumber.innerHTML=`${correntQtn + 1}`;
-    questionTitle.innerHTML=QuizData[correntQtn].Questao;
-    answerLable[0].innerHTML=QuizData[correntQtn].A;
-    answerLable[1].innerHTML=QuizData[correntQtn].B;
-    answerLable[2].innerHTML=QuizData[correntQtn].C;
-    answerLable[3].innerHTML=QuizData[correntQtn].D;
+const loadQuiz = () => {
+  countQuestion.innerHTML = `${correntQtn + 1}`;
+  tottleNumberofQuestion.innerHTML = quizData.length;
+  questionNumber.innerHTML = `${correntQtn + 1}`;
+  questionTitle.innerHTML = quizData[correntQtn].question;
+  answerLable[0].innerHTML = quizData[correntQtn].answer_a;
+  answerLable[1].innerHTML = quizData[correntQtn].answer_b;
+  answerLable[2].innerHTML = quizData[correntQtn].answer_c;
+  answerLable[3].innerHTML = quizData[correntQtn].answer_d;
 
-    reset();
+  reset();
 
-if(correntQtn ==QuizData.length-1){
-    nextQuestionbtn.style.display="none";
-    submitequiz.style.display="block";
-}
+  if (correntQtn == quizData.length - 1) {
+    nextQuestionbtn.style.display = "none";
+    submitequiz.style.display = "block";
+  }
+};
+const reset = () => {
+  allInputs.forEach((allInputs) => {
+    allInputs.checked = false;
+  });
+};
 
-<<<<<<< HEAD
-}
-const reset =()=>{
-    allInputs.forEach((allInputs)=>{
-        allInputs.checked=false;
-    })          
-}
-
-nextQuestionbtn.addEventListener("click",()=>{
- let answer =getselected();
- if(answer){
-    if(answer===QuizData[correntQtn].Correta){
-        answerd++;
-=======
+nextQuestionbtn.addEventListener("click", nextQuestionClickHandler);
 const nextQuestionClickHandler = () => {
   let answer = getSelected();
   if (answer) {
     if (answer === quizData[correntQtn].correct_answer) {
       correctAnswers++;
->>>>>>> 212d83de7ffd8bd07e85f25db6e6ffc8a3472968
     }
     correntQtn++;
-    if(correntQtn<QuizData.length){
-        loadQuiz();
+    if (correntQtn < quizData.length) {
+      loadQuiz();
     }
-<<<<<<< HEAD
- }
-=======
   }
 };
 
@@ -168,49 +100,28 @@ submitequiz.addEventListener("click", () => {
     resultadoEl.style.display = "block";
     scoreEl.innerHTML = `perguntas respondidas corretamente ${correctAnswers} / ${quizData.length}`;
   }
->>>>>>> 212d83de7ffd8bd07e85f25db6e6ffc8a3472968
 });
 
-submitequiz.addEventListener("click", ()=>{
-    let answer =getselected();
-    if(answer === QuizData[correntQtn].Correta){
-        answerd++;
-    };
-    correntQtn++;
-    if(getselected()){
-        quiz.style.display="none";
-        resultadoEl.style.display="block";
-        scoreEl.innerHTML=`perguntas respondidas corretamente ${answerd} / ${QuizData.length}`;
+submitequiz.addEventListener("click", () => {
+  let answer = getSelected();
+  if (answer === quizData[correntQtn].Correta) {
+    answerd++;
+  }
+  correntQtn++;
+  if (getSelected()) {
+    quiz.style.display = "none";
+    resultadoEl.style.display = "block";
+    scoreEl.innerHTML = `perguntas respondidas corretamente ${answerd} / ${quizData.length}`;
+  }
+});
 
+const getSelected = () => {
+  let answer;
+  allInputs.forEach((allInputs) => {
+    if (allInputs.checked) {
+      answer = allInputs.value;
     }
-
-})
-
-const getselected = ()=>{
-    let answer;
-    allInputs.forEach((allInputs)=>{
-      if(allInputs.checked){
-        answer = allInputs.value;
-      }
-    });
-    return answer;
-}
+  });
+  return answer;
+};
 loadQuiz();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
