@@ -50,9 +50,7 @@ const nextQuestionClickHandler = () => {
   }
 };
 
-nextQuestionButton.addEventListener("click", nextQuestionClickHandler);
-
-submitQuizButton.addEventListener("click", () => {
+const submitQuizClickHandler = () => {
   let answer = getSelected();
   if (answer === quizData[currentQuestion].correct_answer) {
     correctAnswers++;
@@ -61,22 +59,19 @@ submitQuizButton.addEventListener("click", () => {
   if (getSelected()) {
     quiz.style.display = "none";
     resultElement.style.display = "block";
-    scoreElement.innerHTML = `perguntas respondidas corretamente ${correctAnswers} / ${quizData.length}`;
+    scoreElement.innerHTML = `Perguntas respondidas corretamente ${correctAnswers} / ${quizData.length}`;
   }
-});
+};
+
+nextQuestionButton.addEventListener("click", nextQuestionClickHandler);
+submitQuizButton.addEventListener("click", submitQuizClickHandler);
 
 const getSelected = () => {
-  let answer;
-  //   allInputs.forEach((input) => {
-  //     if (input.checked) {
-  //       answer = input.value;
-  //     }
-  //   });
-
-  answer = Array.from(allInputs)
+  let answer = Array.from(allInputs)
     .filter((input) => input.checked)
     .pop().value;
 
   return answer;
 };
+
 loadQuiz();
