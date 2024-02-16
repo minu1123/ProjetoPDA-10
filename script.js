@@ -37,12 +37,22 @@ const loadQuiz = () => {
   }
 };
 
+const getSelected = () => {
+  let answer = Array.from(allInputs)
+    .filter((input) => input.checked)
+    .pop().value;
+
+  return answer;
+};
+
+const checkPassword = (answer) =>
+  answer == quizData[currentQuestion].correct_answer;
+
 const nextQuestionClickHandler = () => {
   let answer = getSelected();
   if (answer) {
-    if (answer === quizData[currentQuestion].correct_answer) {
-      correctAnswers++;
-    }
+    if (checkPassword(answer)) correctAnswers++;
+
     currentQuestion++;
     if (currentQuestion < quizData.length) {
       loadQuiz();
@@ -52,11 +62,10 @@ const nextQuestionClickHandler = () => {
 
 const submitQuizClickHandler = () => {
   let answer = getSelected();
-  if (answer === quizData[currentQuestion].correct_answer) {
-    correctAnswers++;
-  }
+  if (checkPassword(answer)) correctAnswers++;
+
   currentQuestion++;
-  if (getSelected()) {
+  if (answer) {
     quiz.style.display = "none";
     resultElement.style.display = "block";
     scoreElement.textContent = `Perguntas respondidas corretamente ${correctAnswers} / ${quizData.length}`;
@@ -65,13 +74,5 @@ const submitQuizClickHandler = () => {
 
 nextQuestionButton.addEventListener("click", nextQuestionClickHandler);
 submitQuizButton.addEventListener("click", submitQuizClickHandler);
-
-const getSelected = () => {
-  let answer = Array.from(allInputs)
-    .filter((input) => input.checked)
-    .pop().value;
-
-  return answer;
-};
 
 loadQuiz();
