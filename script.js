@@ -18,16 +18,16 @@ const reset = () => {
 };
 
 const loadQuiz = () => {
-  countQuestion.innerHTML = currentQuestion + 1;
-  questionNumber.innerHTML = currentQuestion + 1;
+  countQuestion.textContent = currentQuestion + 1;
+  questionNumber.textContent = currentQuestion + 1;
 
-  tottleNumberofQuestion.innerHTML = quizData.length;
+  tottleNumberofQuestion.textContent = quizData.length;
 
-  questionTitle.innerHTML = quizData[currentQuestion].question;
-  answerLable[0].innerHTML = quizData[currentQuestion].answer_a;
-  answerLable[1].innerHTML = quizData[currentQuestion].answer_b;
-  answerLable[2].innerHTML = quizData[currentQuestion].answer_c;
-  answerLable[3].innerHTML = quizData[currentQuestion].answer_d;
+  questionTitle.textContent = quizData[currentQuestion].question;
+  answerLable[0].textContent = quizData[currentQuestion].answer_a;
+  answerLable[1].textContent = quizData[currentQuestion].answer_b;
+  answerLable[2].textContent = quizData[currentQuestion].answer_c;
+  answerLable[3].textContent = quizData[currentQuestion].answer_d;
 
   reset();
 
@@ -59,7 +59,7 @@ const submitQuizClickHandler = () => {
   if (getSelected()) {
     quiz.style.display = "none";
     resultElement.style.display = "block";
-    scoreElement.innerHTML = `Perguntas respondidas corretamente ${correctAnswers} / ${quizData.length}`;
+    scoreElement.textContent = `Perguntas respondidas corretamente ${correctAnswers} / ${quizData.length}`;
   }
 };
 
