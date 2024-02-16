@@ -13,10 +13,16 @@ const scoreElement = document.getElementById("score");
 let currentQuestion = 0;
 let correctAnswers = 0;
 
+const reset = () => {
+  allInputs.forEach((input) => (input.checked = false));
+};
+
 const loadQuiz = () => {
   countQuestion.innerHTML = currentQuestion + 1;
+  questionNumber.innerHTML = currentQuestion + 1;
+
   tottleNumberofQuestion.innerHTML = quizData.length;
-  questionNumber.innerHTML = `${currentQuestion + 1}`;
+
   questionTitle.innerHTML = quizData[currentQuestion].question;
   answerLable[0].innerHTML = quizData[currentQuestion].answer_a;
   answerLable[1].innerHTML = quizData[currentQuestion].answer_b;
@@ -29,11 +35,6 @@ const loadQuiz = () => {
     nextQuestionButton.style.display = "none";
     submitQuizButton.style.display = "block";
   }
-};
-const reset = () => {
-  allInputs.forEach((allInputs) => {
-    allInputs.checked = false;
-  });
 };
 
 const nextQuestionClickHandler = () => {
