@@ -4,30 +4,30 @@ const tottleNumberofQuestion = document.getElementById("tol-num-que");
 const questionNumber = document.getElementById("question-number");
 const questionTitle = document.getElementById("question");
 const answerLable = document.querySelectorAll(".answer-lable");
-const nextQuestionbtn = document.getElementById("next-question-btn");
+const nextQuestionButton = document.getElementById("next-question-btn");
 const allInputs = document.querySelectorAll("input[type='radio']");
-const submitequiz = document.getElementById("submite");
-const resultadoEl = document.getElementById("resultado");
-const scoreEl = document.getElementById("score");
+const submitQuizButton = document.getElementById("submit-button");
+const resultElement = document.getElementById("result");
+const scoreElement = document.getElementById("score");
 
-let correntQtn = 0;
+let currentQuestion = 0;
 let correctAnswers = 0;
 
 const loadQuiz = () => {
-  countQuestion.innerHTML = `${correntQtn + 1}`;
+  countQuestion.innerHTML = currentQuestion + 1;
   tottleNumberofQuestion.innerHTML = quizData.length;
-  questionNumber.innerHTML = `${correntQtn + 1}`;
-  questionTitle.innerHTML = quizData[correntQtn].question;
-  answerLable[0].innerHTML = quizData[correntQtn].answer_a;
-  answerLable[1].innerHTML = quizData[correntQtn].answer_b;
-  answerLable[2].innerHTML = quizData[correntQtn].answer_c;
-  answerLable[3].innerHTML = quizData[correntQtn].answer_d;
+  questionNumber.innerHTML = `${currentQuestion + 1}`;
+  questionTitle.innerHTML = quizData[currentQuestion].question;
+  answerLable[0].innerHTML = quizData[currentQuestion].answer_a;
+  answerLable[1].innerHTML = quizData[currentQuestion].answer_b;
+  answerLable[2].innerHTML = quizData[currentQuestion].answer_c;
+  answerLable[3].innerHTML = quizData[currentQuestion].answer_d;
 
   reset();
 
-  if (correntQtn == quizData.length - 1) {
-    nextQuestionbtn.style.display = "none";
-    submitequiz.style.display = "block";
+  if (currentQuestion == quizData.length - 1) {
+    nextQuestionButton.style.display = "none";
+    submitQuizButton.style.display = "block";
   }
 };
 const reset = () => {
@@ -39,28 +39,28 @@ const reset = () => {
 const nextQuestionClickHandler = () => {
   let answer = getSelected();
   if (answer) {
-    if (answer === quizData[correntQtn].correct_answer) {
+    if (answer === quizData[currentQuestion].correct_answer) {
       correctAnswers++;
     }
-    correntQtn++;
-    if (correntQtn < quizData.length) {
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
       loadQuiz();
     }
   }
 };
 
-nextQuestionbtn.addEventListener("click", nextQuestionClickHandler);
+nextQuestionButton.addEventListener("click", nextQuestionClickHandler);
 
-submitequiz.addEventListener("click", () => {
+submitQuizButton.addEventListener("click", () => {
   let answer = getSelected();
-  if (answer === quizData[correntQtn].correct_answer) {
+  if (answer === quizData[currentQuestion].correct_answer) {
     correctAnswers++;
   }
-  correntQtn++;
+  currentQuestion++;
   if (getSelected()) {
     quiz.style.display = "none";
-    resultadoEl.style.display = "block";
-    scoreEl.innerHTML = `perguntas respondidas corretamente ${correctAnswers} / ${quizData.length}`;
+    resultElement.style.display = "block";
+    scoreElement.innerHTML = `perguntas respondidas corretamente ${correctAnswers} / ${quizData.length}`;
   }
 });
 
