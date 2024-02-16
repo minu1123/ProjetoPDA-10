@@ -11,7 +11,7 @@ const scoreElement = document.getElementById("score");
 
 const allInputs = document.querySelectorAll("input[type='radio']");
 
-let currentQuestion,
+let currentQuestion = 0,
   correctAnswers = 0;
 
 const reset = () => {
